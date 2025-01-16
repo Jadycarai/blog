@@ -4,24 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat com Simo</title>
-    <link rel="stylesheet" href="chat.css">
-    
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-box" id="chat-box">
-            <!-- As mensagens aparecerão aqui -->
+
+    <div class="container">
+        <h2>Chat com Simo</h2>
+        
+        <div id="login-section">
+            <h3>Faça login ou registre-se</h3>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Digite seu e-mail" />
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Digite sua senha" />
+            </div>
+            <button onclick="loginUser()">Login</button>
+            <button onclick="registerUser()">Registrar</button>
         </div>
-        <div class="chat-input">
-            <input type="text" id="user-message" placeholder="Digite sua mensagem..." />
+
+        <div id="nickname-section" style="display:none;">
+            <h3>Escolha seu nickname</h3>
+            <input type="text" id="nickname" placeholder="Escolha um nome" />
+            <button onclick="saveNickname()">Salvar Nickname</button>
+        </div>
+
+        <div id="chat-section" style="display:none;">
+            <div class="messages" id="messages-container"></div>
+            <div class="form-group">
+                <input type="text" id="message-input" placeholder="Digite sua mensagem" />
+            </div>
             <button onclick="sendMessage()">Enviar</button>
         </div>
     </div>
 
     <script src="chat.js"></script>
+
 </body>
 </html>
-<input type="text" id="nickname" placeholder="Escolha seu nickname" />
