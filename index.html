@@ -3,130 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Blog</title>
+    <title>Blog Modelo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f9f9f9;
         }
 
+        /* Cabeçalho */
         header {
-            background-color: #333;
-            color: white;
-            padding: 15px 20px;
-            text-align: center;
-        }
-
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .image-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .content {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .anuncio {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 20px;
-            z-index: 1000;
-        }
-
-        .anuncio-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .anuncio-header h2 {
+        header img {
+            max-height: 50px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ff6600;
+        }
+
+        /* Anúncio */
+        .anuncio {
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .anuncio img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Notícias */
+        .noticias {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .noticia {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            flex: 1 1 calc(33.333% - 20px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .noticia img {
+            width: 100%;
+            height: auto;
+        }
+
+        .noticia-content {
+            padding: 15px;
+        }
+
+        .noticia h3 {
             font-size: 18px;
-            margin: 0;
+            margin: 0 0 10px;
             color: #333;
         }
 
-        .close-btn {
-            font-size: 16px;
-            color: #999;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        .close-btn:hover {
-            color: #ff3333;
-        }
-
-        .anuncio-content {
-            margin-top: 10px;
-            color: #555;
+        .noticia p {
             font-size: 14px;
+            color: #666;
         }
 
-        .anuncio-content a {
-            color: #007BFF;
+        .noticia a {
             text-decoration: none;
+            color: #ff6600;
+            font-weight: bold;
         }
 
-        .anuncio-content a:hover {
+        .noticia a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
+
+    <!-- Cabeçalho -->
     <header>
-        <h1>Bem-vindo ao Meu Blog</h1>
+        <div class="logo">
+            <img src="https://media.discordapp.net/attachments/1308931882968420405/1308932141811499038/image.png?ex=678a3a4d&is=6788e8cd&hm=ed157e73a3604ec7f2ffd85f9519717aa3f22fd943a5f6b67b1642c56b35bdfc&=&format=webp&quality=lossless" alt="Logo do Blog">
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#design">Design</a>
+            <a href="#fotografia">Fotografia</a>
+            <a href="#marketing">Marketing</a>
+        </nav>
     </header>
-    <main>
-        <div class="image-container">
-            <img src="https://i.pinimg.com/originals/9e/38/4f/9e384f9ba36496809b7c446bab4115b7.jpg" alt="Imagem do Blog">
-        </div>
-        <div class="content">
-            <p>Este é um exemplo de blog simples. Aqui você pode adicionar conteúdos, como textos, imagens e muito mais!</p>
-            <p>Explore o layout e personalize conforme sua necessidade. Divirta-se criando!</p>
-        </div>
-    </main>
-    <div class="anuncio" id="anuncio">
-        <div class="anuncio-header">
-            <h2>Oferta Especial!</h2>
-            <button class="close-btn" onclick="fecharAnuncio()">✖</button>
-        </div>
-        <div class="anuncio-content">
-            <p>Confira nossos descontos exclusivos em <a href="#">produtos selecionados</a>.</p>
-            <p>Não perca essa chance! Promoção válida até o final do mês.</p>
-        </div>
+
+    <!-- Anúncio -->
+    <div class="anuncio">
+        <img src="https://pbs.twimg.com/media/E-hz9tIXsAw8UI6?format=jpg&name=4096x4096" alt="Anúncio">
     </div>
-    <script>
-        function fecharAnuncio() {
-            const anuncio = document.getElementById("anuncio");
-            anuncio.style.opacity = "0";
-            setTimeout(() => anuncio.style.display = "none", 500);
-        }
-    </script>
+
+    <!-- Seção de Notícias -->
+    <section class="noticias">
+        <div class="noticia">
+            <img src="https://pbs.twimg.com/media/E-hz9tIXsAw8UI6?format=jpg&name=4096x4096" alt="Notícia 1">
+            <div class="noticia-content">
+                <h3>5 dicas para fechar mais contratos como freelancer</h3>
+                <p>Muitos freelancers não conseguem grandes projetos por erros comuns.</p>
+                <a href="#link1">Leia mais</a>
+            </div>
+        </div>
+        <div class="noticia">
+            <img src="https://pbs.twimg.com/media/E-hz9tIXsAw8UI6?format=jpg&name=4096x4096" alt="Notícia 2">
+            <div class="noticia-content">
+                <h3>Aprenda a agendar posts 3D no Facebook</h3>
+                <p>Descubra como usar as novas ferramentas para melhorar seu engajamento.</p>
+                <a href="#link2">Leia mais</a>
+            </div>
+        </div>
+        <div class="noticia">
+            <img src="https://pbs.twimg.com/media/E-hz9tIXsAw8UI6?format=jpg&name=4096x4096" alt="Notícia 3">
+            <div class="noticia-content">
+                <h3>Quanto investir para atingir seus objetivos?</h3>
+                <p>Saiba como planejar seu orçamento de marketing com eficiência.</p>
+                <a href="#link3">Leia mais</a>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
