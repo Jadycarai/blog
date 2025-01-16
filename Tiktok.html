@@ -37,4 +37,19 @@
 </body>
 </html>
 <link rel="stylesheet" href="TikTok.css">
+<!-- Botão de Seguir -->
+<button id="followButton" class="follow-btn">Seguir</button>
+
+<!-- Botão de Mensagem -->
+<button id="messageButton" class="message-btn">Mensagem</button>
+
+<!-- Modal de Mensagens -->
+<div id="messageModal" style="display: none;">
+    <div>
+        <textarea id="messageInput" placeholder="Escreva sua mensagem"></textarea>
+        <button onclick="sendMessage()">Enviar</button>
+        <button onclick="closeMessageChannel()">Fechar</button>
+    </div>
+    <div id="messageOutput"></div>
+</div>
 <script src="js/script.js"></script>
