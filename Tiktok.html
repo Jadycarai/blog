@@ -3,105 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil do TikTok - @simoZipZip</title>
+    <title>Chat do Simo</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="background">
         <div class="profile-wrapper">
-            <!-- Foto de perfil e informações principais -->
+            <!-- Perfil do Simo -->
             <div class="profile-header">
                 <div class="profile-image">
-                    <img src="https://i.pinimg.com/736x/fe/bd/7a/febd7abe727036ceb2fdc2b6d4c865b8.jpg" alt="Foto de Perfil">
+                    <img src="https://via.placeholder.com/150" alt="Foto de Perfil">
                 </div>
-                <div class="profile-info">
-                    <h1>@simo</h1>
-                    <p class="followers"><strong id="followers-count">4,000</strong> Seguidores</p>
-                    <p class="following"><strong>200</strong> Seguindo</p>
-                    <p class="bio">Explorando o mundo e resolvendo mistérios. <span class="highlight">#Aliens</span></p>
-                </div>
+                <h1>@simo</h1>
+                <p class="bio">Explorando o mundo e resolvendo mistérios!</p>
             </div>
-
-            <!-- Wallpaper abaixo da bio -->
-            <div class="profile-wallpaper">
-                <img src="https://images7.alphacoders.com/439/thumb-1920-439418.jpg" alt="Wallpaper do Simo">
-            </div>
-
-            <!-- Botões de ação -->
-            <div class="actions">
-                <button class="follow-btn" onclick="follow()">Seguir</button>
-                <button class="message-btn" onclick="openMessageChannel()">Mensagem</button>
-            </div>
-
-            <!-- Botão para voltar à página inicial -->
-            <div class="back-btn">
-                <a href="index.html" class="back-button">Voltar para a página inicial</a>
-            </div>
+            <button class="message-btn" onclick="openChat()">Abrir Canal de Mensagem</button>
         </div>
     </div>
 
-    <!-- Modal de Mensagem -->
-    <div id="messageModal" class="modal">
+    <!-- Modal do Chat -->
+    <div id="chatModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeMessageChannel()">&times;</span>
-            <h2>Enviar Mensagem para @simo Gallagher de Luca</h2>
+            <span class="close-btn" onclick="closeChat()">&times;</span>
+            <h2>Canal de Mensagem</h2>
             <input id="userNick" type="text" placeholder="Digite seu nick">
-            <textarea id="messageInput" placeholder="Digite sua mensagem..."></textarea>
+            <div id="chatBox"></div>
+            <input id="messageInput" type="text" placeholder="Digite sua mensagem">
             <button onclick="sendMessage()">Enviar</button>
-            <div id="messageOutput"></div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script>
     <script>
-        // Seguidores iniciais
-        let followers = 1000000;
+        let socket;
+        let userNick = "";
 
-        // Função para seguir
-        function follow() {
-            // Gerar efeito de confetes
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
+        function openChat() {
+            userNick = document.getElementById('userNick').value || 'Anônimo';
+            document.getElementById('chatModal').style.display = 'block';
 
-            // Alterar texto do botão e aumentar seguidores
-            const followBtn = document.querySelector('.follow-btn');
-            followBtn.innerHTML = 'Seguindo';
-            followBtn.disabled = true;  // Desabilitar botão
-            document.getElementById('followers-count').textContent = (++followers).toLocaleString(); // Incrementar seguidores
+            // Conectar ao WebSocket
+            socket = new WebSocket('ws://localhost:8080');
+            socket.onmessage = function(event) {
+                const chatBox = document.getElementById('chatBox');
+                chatBox.innerHTML += `<p>${event.data}</p>`;
+                chatBox.scrollTop = chatBox.scrollHeight; // Scroll automático
+            };
         }
 
-        // Funções para o canal de mensagens
+        function closeChat() {
+            document.getElementById('chatModal').style.display = 'none';
+            if (socket) socket.close();
+        }
+
         function sendMessage() {
-            const nick = document.getElementById('userNick').value || 'Anônimo';
-            const message = document.getElementById('messageInput').value;
-            const output = document.getElementById('messageOutput');
-
-            if (message) {
-                // Mostrar mensagem do usuário
-                output.innerHTML += `<p><strong>${nick}:</strong> ${message}</p>`;
-
-                // Resposta do Simo
-                setTimeout(() => {
-                    output.innerHTML += `<p><strong>@simo:</strong> Ata, amo., ${nick}!</p>`;
-                    output.scrollTop = output.scrollHeight; // Scroll automático
-                }, 1000);
-
-                // Limpar entrada
-                document.getElementById('messageInput').value = '';
+            const messageInput = document.getElementById('messageInput');
+            const message = `${userNick}: ${messageInput.value}`;
+            if (socket && messageInput.value.trim()) {
+                socket.send(message);
+                messageInput.value = ''; // Limpar campo
             }
-        }
-
-        function openMessageChannel() {
-            document.getElementById('messageModal').style.display = 'block';
-        }
-
-        function closeMessageChannel() {
-            document.getElementById('messageModal').style.display = 'none';
         }
     </script>
 </body>
 </html>
+
 <link rel="stylesheet" href="TikTok.css">
