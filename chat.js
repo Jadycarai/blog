@@ -1,195 +1,102 @@
 // Configuração do Firebase
-
 const firebaseConfig = {
-  apiKey: "AIzaSyAyysNMTDMN5nJsZpZK-w73Ko5X2SKZSN0",
-  authDomain: "projeto-conversa-d94ad.firebaseapp.com",
-  projectId: "projeto-conversa-d94ad",
-  storageBucket: "projeto-conversa-d94ad.firebasestorage.app",
-  messagingSenderId: "23391291535",
-  appId: "1:23391291535:web:a129b0560149eccd0fc8fa",
-  measurementId: "G-5VVV1SC71D"
+    apiKey: "AIzaSyAyysNMTDMN5nJsZpZK-w73Ko5X2SKZSN0",
+    authDomain: "projeto-conversa-d94ad.firebaseapp.com",
+    projectId: "projeto-conversa-d94ad",
+    storageBucket: "projeto-conversa-d94ad.firebasestorage.app",
+    messagingSenderId: "23391291535",
+    appId: "1:23391291535:web:a129b0560149eccd0fc8fa",
+    measurementId: "G-5VVV1SC71D"
 };
-// Inicializar o Firebase
+// Inicializa o Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+const auth = firebase.auth();
 
-// Função para enviar uma mensagem
-function sendMessage() {
-    const userMessage = document.getElementById('user-message').value;
-    if (userMessage.trim() !== "") {
-        // Exibe a mensagem do usuário
-        displayMessage(userMessage, "user-message");
-        
-        // Limpa o campo de entrada
-        document.getElementById('user-message').value = "";
+// Função para registrar um novo usuário
+async function registerUser() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-        // Envia a mensagem para o Firebase
-        db.collection("messages").add({
-            sender: "user",
-            message: userMessage,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        });
-        
-        // Simula uma resposta do Simo após 1 segundo
-        setTimeout(() => {
-            const simoResponse = generateSimoResponse();
-            displayMessage(simoResponse, "simo-message");
-
-            // Envia a resposta do Simo para o Firebase
-            db.collection("messages").add({
-                sender: "simo",
-                message: simoResponse,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            });
-        }, 1000);
-    }
-}
-
-// Função para exibir a mensagem no chat
-function displayMessage(message, sender) {
-    const chatBox = document.getElementById('chat-box');
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('message', sender);
-    messageElement.textContent = message;
-    chatBox.appendChild(messageElement);
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
-
-// Função para gerar respostas automáticas do Simo
-function generateSimoResponse() {
-    const responses = [
-        "Olá! Como posso ajudar?",
-        "Você sabe, estou sempre por aqui! O que você está fazendo?",
-        "Mistérios do mundo, hein? Fico curioso também.",
-        "Eu sou Simo, seu guia! O que você quer saber?"
-    ];
-    const randomIndex = Math.floor(Math.random() * responses.length);
-    return responses[randomIndex];
-}
-
-// Função para carregar as mensagens do Firebase
-function loadMessages() {
-    db.collection("messages")
-        .orderBy("timestamp")
-        .onSnapshot(snapshot => {
-            const messages = snapshot.docs.map(doc => doc.data());
-            document.getElementById('chat-box').innerHTML = "";
-            messages.forEach(msg => {
-                displayMessage(msg.message, msg.sender === "user" ? "user-message" : "simo-message");
-            });
-        });
-}
-
-// Carregar as mensagens ao abrir a página
-loadMessages();
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-
-// Inicializar autenticação
-const auth = getAuth();
-
-// Função para criar uma conta
-async function registerUser(email, password) {
     try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        console.log("Usuário registrado:", user);
+        await firebase.auth().createUserWithEmailAndPassword(email, password);
+        alert('Usuário registrado com sucesso!');
     } catch (error) {
-        console.error("Erro ao registrar usuário:", error.message);
+        console.error(error);
+        alert(error.message);
     }
 }
 
 // Função para fazer login
-async function loginUser(email, password) {
+async function loginUser() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
     try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        console.log("Usuário logado:", user);
+        await firebase.auth().signInWithEmailAndPassword(email, password);
+        alert('Login bem-sucedido!');
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('nickname-section').style.display = 'block';
     } catch (error) {
-        console.error("Erro ao fazer login:", error.message);
+        console.error(error);
+        alert(error.message);
     }
 }
 
-// Monitore o estado de autenticação (se o usuário estiver logado ou não)
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        console.log("Usuário logado:", user);
-    } else {
-        console.log("Usuário não está logado");
-    }
-});
-// Função para salvar o nickname do usuário no Firestore
-import { doc, setDoc } from "firebase/firestore";
-import { db } from './firebase';  // Importar a instância do Firestore
+// Função para salvar o nickname do usuário
+async function saveNickname() {
+    const nickname = document.getElementById('nickname').value;
+    const user = firebase.auth().currentUser;
 
-async function saveNickname(nickname) {
-    const user = auth.currentUser;
     if (user) {
-        const userRef = doc(db, "users", user.uid);
-        await setDoc(userRef, { nickname: nickname });
-        console.log("Nickname salvo!");
+        await db.collection('users').doc(user.uid).set({
+            nickname: nickname
+        });
+
+        alert('Nickname salvo!');
+        document.getElementById('nickname-section').style.display = 'none';
+        document.getElementById('chat-section').style.display = 'block';
+        loadMessages();
     }
 }
-import { collection, addDoc, Timestamp } from "firebase/firestore";
 
-async function sendMessage(messageContent) {
-    const user = auth.currentUser;
-    if (user) {
-        // Obtenha o nickname do usuário
-        const nicknameRef = doc(db, "users", user.uid);
-        const nicknameDoc = await getDoc(nicknameRef);
-        const nickname = nicknameDoc.exists() ? nicknameDoc.data().nickname : user.email;
+// Função para enviar uma mensagem
+async function sendMessage() {
+    const messageContent = document.getElementById('message-input').value;
+    const user = firebase.auth().currentUser;
 
-        // Salve a mensagem com o nickname
-        await addDoc(collection(db, "messages"), {
+    if (user && messageContent) {
+        const userDoc = await db.collection('users').doc(user.uid).get();
+        const nickname = userDoc.exists ? userDoc.data().nickname : user.email;
+
+        await db.collection('messages').add({
             content: messageContent,
             nickname: nickname,
-            timestamp: Timestamp.now(),
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
         });
-        console.log("Mensagem enviada!");
+
+        document.getElementById('message-input').value = '';  // Limpar o campo de mensagem
     }
 }
-import { onSnapshot, query, orderBy, collection } from "firebase/firestore";
 
-const q = query(collection(db, "messages"), orderBy("timestamp", "desc"));
+// Função para carregar mensagens
+async function loadMessages() {
+    const messagesContainer = document.getElementById('messages-container');
+    const messagesSnapshot = await db.collection('messages').orderBy('timestamp').get();
 
-onSnapshot(q, (querySnapshot) => {
-    let messagesHtml = '';
-    querySnapshot.forEach((doc) => {
+    messagesSnapshot.forEach(doc => {
         const message = doc.data();
-        messagesHtml += `
-            <div class="message">
-                <strong>${message.nickname}</strong>: ${message.content}
-            </div>
-        `;
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'message';
+        messageDiv.innerHTML = `<strong>${message.nickname}</strong>: ${message.content}`;
+        messagesContainer.appendChild(messageDiv);
     });
-    document.getElementById('messages-container').innerHTML = messagesHtml;
-});
-async function sendReply(messageId, replyContent) {
-    const user = auth.currentUser;
-    if (user) {
-        // Responder a mensagem com o nickname "Simo"
-        await addDoc(collection(db, "messages"), {
-            content: replyContent,
-            nickname: "Simo",  // Aqui você pode definir o nome do remetente como "Simo"
-            replyTo: messageId,  // Isso faz referência à mensagem original
-            timestamp: Timestamp.now(),
-        });
-        console.log("Resposta enviada!");
-    }
+
+    // Scroll até a última mensagem
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
-onSnapshot(q, (querySnapshot) => {
-    let messagesHtml = '';
-    querySnapshot.forEach((doc) => {
-        const message = doc.data();
-        if (message.replyTo) {
-            // Aqui você pode buscar a mensagem original com base no ID (message.replyTo)
-            // E exibir a resposta abaixo dela
-        }
-        messagesHtml += `
-            <div class="message">
-                <strong>${message.nickname}</strong>: ${message.content}
-            </div>
-        `;
-    });
-    document.getElementById('messages-container').innerHTML = messagesHtml;
+
+// Carregar mensagens constantemente
+db.collection('messages').orderBy('timestamp').onSnapshot(snapshot => {
+    loadMessages();
 });
