@@ -82,3 +82,50 @@ function loadMessages() {
 
 // Carregar as mensagens ao abrir a página
 loadMessages();
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+
+// Inicializar autenticação
+const auth = getAuth();
+
+// Função para criar uma conta
+async function registerUser(email, password) {
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        console.log("Usuário registrado:", user);
+    } catch (error) {
+        console.error("Erro ao registrar usuário:", error.message);
+    }
+}
+
+// Função para fazer login
+async function loginUser(email, password) {
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        console.log("Usuário logado:", user);
+    } catch (error) {
+        console.error("Erro ao fazer login:", error.message);
+    }
+}
+
+// Monitore o estado de autenticação (se o usuário estiver logado ou não)
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        console.log("Usuário logado:", user);
+    } else {
+        console.log("Usuário não está logado");
+    }
+});
+// Função para salvar o nickname do usuário no Firestore
+import { doc, setDoc } from "firebase/firestore";
+import { db } from './firebase';  // Importar a instância do Firestore
+
+async function saveNickname(nickname) {
+    const user = auth.currentUser;
+    if (user) {
+        const userRef = doc(db, "users", user.uid);
+        await setDoc(userRef, { nickname: nickname });
+        console.log("Nickname salvo!");
+    }
+}
