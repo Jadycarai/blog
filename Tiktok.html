@@ -30,26 +30,11 @@
             <!-- Botões de Ação -->
             <div class="actions">
                 <button class="follow-btn">Seguir</button>
-                <button class="message-btn">Mensagem</button>
+                <a id="messageButton" href="https://exemplo.com/chat" class="message-btn" target="_blank">Mensagem</a>
             </div>
         </div>
     </div>
 </body>
 </html>
 <link rel="stylesheet" href="TikTok.css">
-<!-- Botão de Seguir -->
-<button id="followButton" class="follow-btn">Seguir</button>
 
-<!-- Botão de Mensagem -->
-<button id="messageButton" class="message-btn">Mensagem</button>
-
-<!-- Modal de Mensagens -->
-<div id="messageModal" style="display: none;">
-    <div>
-        <textarea id="messageInput" placeholder="Escreva sua mensagem"></textarea>
-        <button onclick="sendMessage()">Enviar</button>
-        <button onclick="closeMessageChannel()">Fechar</button>
-    </div>
-    <div id="messageOutput"></div>
-</div>
-<script src="server.js"></script>
