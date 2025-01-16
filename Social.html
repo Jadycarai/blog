@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat com Simo</title>
+    <title>Contato com Simo</title>
     <link rel="stylesheet" href="chat.css">
 </head>
 <body>
-    <div class="chat-container">
-        <div class="user-registration">
-            <h2>Bem-vindo ao chat com Simo!</h2>
-            <input type="text" id="nickname" placeholder="Digite seu nome (nickname)">
-            <button id="registerBtn">Registrar</button>
+    <div class="contact-container">
+        <!-- Foto de Perfil -->
+        <div class="profile">
+            <img src="https://i.pinimg.com/736x/b4/41/5f/b4415fed16b4dc79bec6a23cdf18b22c.jpg" alt="Simo" class="profile-image">
         </div>
 
-        <div class="chat-box" id="chatBox" style="display: none;">
-            <div class="messages" id="messages"></div>
-            <input type="text" id="messageInput" placeholder="Digite sua mensagem">
-            <button id="sendMessageBtn">Enviar</button>
+        <!-- Informações de Contato -->
+        <div class="contact-info">
+            <h1>Entre em Contato com Simo!</h1>
+            <p>Deixe sua mensagem, eu vou ler! Ou me ligue:</p>
+            <a href="tel:+55 16 99326-2426" class="contact-btn">Ligar para Simo</a>
+            <p>Ou envie uma mensagem para o número abaixo:</p>
+            <p class="contact-number">+55 16 99326-2426</p>
         </div>
     </div>
-
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"></script>
+    
     <script src="chat.js"></script>
 </body>
 </html>
