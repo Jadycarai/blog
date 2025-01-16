@@ -129,3 +129,67 @@ async function saveNickname(nickname) {
         console.log("Nickname salvo!");
     }
 }
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+
+async function sendMessage(messageContent) {
+    const user = auth.currentUser;
+    if (user) {
+        // Obtenha o nickname do usuário
+        const nicknameRef = doc(db, "users", user.uid);
+        const nicknameDoc = await getDoc(nicknameRef);
+        const nickname = nicknameDoc.exists() ? nicknameDoc.data().nickname : user.email;
+
+        // Salve a mensagem com o nickname
+        await addDoc(collection(db, "messages"), {
+            content: messageContent,
+            nickname: nickname,
+            timestamp: Timestamp.now(),
+        });
+        console.log("Mensagem enviada!");
+    }
+}
+import { onSnapshot, query, orderBy, collection } from "firebase/firestore";
+
+const q = query(collection(db, "messages"), orderBy("timestamp", "desc"));
+
+onSnapshot(q, (querySnapshot) => {
+    let messagesHtml = '';
+    querySnapshot.forEach((doc) => {
+        const message = doc.data();
+        messagesHtml += `
+            <div class="message">
+                <strong>${message.nickname}</strong>: ${message.content}
+            </div>
+        `;
+    });
+    document.getElementById('messages-container').innerHTML = messagesHtml;
+});
+async function sendReply(messageId, replyContent) {
+    const user = auth.currentUser;
+    if (user) {
+        // Responder a mensagem com o nickname "Simo"
+        await addDoc(collection(db, "messages"), {
+            content: replyContent,
+            nickname: "Simo",  // Aqui você pode definir o nome do remetente como "Simo"
+            replyTo: messageId,  // Isso faz referência à mensagem original
+            timestamp: Timestamp.now(),
+        });
+        console.log("Resposta enviada!");
+    }
+}
+onSnapshot(q, (querySnapshot) => {
+    let messagesHtml = '';
+    querySnapshot.forEach((doc) => {
+        const message = doc.data();
+        if (message.replyTo) {
+            // Aqui você pode buscar a mensagem original com base no ID (message.replyTo)
+            // E exibir a resposta abaixo dela
+        }
+        messagesHtml += `
+            <div class="message">
+                <strong>${message.nickname}</strong>: ${message.content}
+            </div>
+        `;
+    });
+    document.getElementById('messages-container').innerHTML = messagesHtml;
+});
