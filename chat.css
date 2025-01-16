@@ -1,76 +1,53 @@
-/* Estilo básico do Chat */
-body, html {
+/* Adicione seu estilo aqui */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    box-sizing: border-box;
 }
 
-.chat-container {
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
     background-color: white;
-    border-radius: 8px;
-    width: 400px;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.chat-box {
-    flex: 1;
-    padding: 10px;
-    overflow-y: scroll;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
+.messages {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
 }
 
 .message {
-    margin: 10px 0;
-    padding: 8px;
-    border-radius: 10px;
-    max-width: 70%;
-    word-wrap: break-word;
+    margin-bottom: 10px;
 }
 
-.user-message {
-    background-color: #d3f8e2;
-    align-self: flex-end;
+.message strong {
+    color: #4CAF50;
 }
 
-.simo-message {
-    background-color: #f1f1f1;
-    align-self: flex-start;
+.form-group {
+    margin-bottom: 10px;
 }
 
-.chat-input {
-    display: flex;
+input, button {
+    width: 100%;
     padding: 10px;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
-}
-
-.chat-input input {
-    flex: 1;
-    padding: 10px;
+    margin: 5px 0;
     border-radius: 5px;
     border: 1px solid #ddd;
 }
 
-.chat-input button {
-    padding: 10px;
+button {
     background-color: #007BFF;
     color: white;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
-.chat-input button:hover {
+button:hover {
     background-color: #0056b3;
 }
