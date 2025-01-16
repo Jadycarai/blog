@@ -8,6 +8,7 @@ const firebaseConfig = {
     appId: "1:23391291535:web:a129b0560149eccd0fc8fa",
     measurementId: "G-5VVV1SC71D"
 };
+
 // Inicializa o Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
@@ -19,11 +20,14 @@ async function registerUser() {
     const password = document.getElementById('password').value;
 
     try {
-        await firebase.auth().createUserWithEmailAndPassword(email, password);
+        // Criar um novo usuário com e-mail e senha
+        await auth.createUserWithEmailAndPassword(email, password);
         alert('Usuário registrado com sucesso!');
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('nickname-section').style.display = 'block';
     } catch (error) {
         console.error(error);
-        alert(error.message);
+        alert(error.message); // Exibe a mensagem de erro
     }
 }
 
@@ -33,22 +37,24 @@ async function loginUser() {
     const password = document.getElementById('password').value;
 
     try {
-        await firebase.auth().signInWithEmailAndPassword(email, password);
+        // Tenta fazer login com o e-mail e senha
+        await auth.signInWithEmailAndPassword(email, password);
         alert('Login bem-sucedido!');
         document.getElementById('login-section').style.display = 'none';
         document.getElementById('nickname-section').style.display = 'block';
     } catch (error) {
         console.error(error);
-        alert(error.message);
+        alert(error.message); // Exibe a mensagem de erro
     }
 }
 
 // Função para salvar o nickname do usuário
 async function saveNickname() {
     const nickname = document.getElementById('nickname').value;
-    const user = firebase.auth().currentUser;
+    const user = auth.currentUser;
 
     if (user) {
+        // Salva o nickname no Firestore
         await db.collection('users').doc(user.uid).set({
             nickname: nickname
         });
@@ -63,7 +69,7 @@ async function saveNickname() {
 // Função para enviar uma mensagem
 async function sendMessage() {
     const messageContent = document.getElementById('message-input').value;
-    const user = firebase.auth().currentUser;
+    const user = auth.currentUser;
 
     if (user && messageContent) {
         const userDoc = await db.collection('users').doc(user.uid).get();
