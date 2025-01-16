@@ -4,6 +4,11 @@ body, html {
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
 }
 
 /* Centralizando e ajustando o layout */
@@ -15,6 +20,11 @@ body, html {
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-wrapper:hover {
+    transform: scale(1.05);
 }
 
 .profile-header {
@@ -41,10 +51,12 @@ body, html {
 .profile-info h1 {
     font-size: 24px;
     margin: 0;
+    color: #333;
 }
 
 .profile-info p {
     margin: 5px 0;
+    color: #666;
 }
 
 .profile-wallpaper img {
@@ -55,13 +67,17 @@ body, html {
 }
 
 /* Botões */
-.actions button {
+.actions button,
+.actions a {
     margin: 10px;
     padding: 10px 20px;
     border: none;
     border-radius: 25px;
     cursor: pointer;
     font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .follow-btn {
@@ -72,4 +88,29 @@ body, html {
 .message-btn {
     background-color: #007BFF;
     color: white;
+}
+
+.actions button:hover,
+.actions a:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+/* Estilo para telas menores */
+@media (max-width: 480px) {
+    .profile-wrapper {
+        width: 90%;
+        padding: 15px;
+    }
+    .profile-header {
+        margin-bottom: 20px;
+    }
+    .profile-info h1 {
+        font-size: 20px;
+    }
+    .actions button,
+    .actions a {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
 }
