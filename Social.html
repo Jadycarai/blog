@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat com Simo</title>
     <link rel="stylesheet" href="chat.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js"></script>
 </head>
 <body>
     <div class="chat-container">
         <div class="chat-box" id="chat-box">
-            <!-- Mensagens aparecerão aqui -->
+            <!-- As mensagens aparecerão aqui -->
         </div>
         <div class="chat-input">
             <input type="text" id="user-message" placeholder="Digite sua mensagem..." />
