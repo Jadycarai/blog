@@ -4,26 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil do TikTok - @simoZipZip</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="profile-wrapper">
-        <div class="profile-header">
-            <div class="profile-image">
-                <img src="https://cdn-icons-png.flaticon.com/512/10928/10928949.png" alt="Foto de Perfil">
+    <div class="background">
+        <div class="profile-wrapper">
+            <div class="profile-header">
+                <div class="profile-image">
+                    <img src="https://i.pinimg.com/736x/fe/bd/7a/febd7abe727036ceb2fdc2b6d4c865b8.jpg" alt="Foto de Perfil">
+                </div>
+                <div class="profile-info">
+                    <h1>@simo Gallagher de Luca</h1>
+                    <p class="followers"><strong>4k</strong> Seguidores</p>
+                    <p class="following"><strong>9</strong> Seguindo</p>
+                    <p class="bio">Explorando o mundo e resolvendo mistérios. <span class="highlight">#Aliens</span></p>
+                </div>
             </div>
-            <div class="profile-info">
-                <h1>@simoZipZIp</h1>
-                <p class="followers"><strong>1M</strong> Seguidores</p>
-                <p class="following"><strong>200</strong> Seguindo</p>
-                <p class="bio">Explorando o mundo e resolvendo mistérios. <span class="highlight">#Aventuras</span></p>
+            <div class="actions">
+                <button class="message-btn" onclick="openMessageChannel()">Mensagem</button>
+                <button class="follow-btn" onclick="follow()">Seguir</button>
             </div>
-        </div>
-        <div class="actions">
-            <button class="message-btn">Mensagem</button>
-            <button class="follow-btn">Seguir</button>
+            <div class="back-btn">
+                <a href="index.html" class="back-button">Voltar para a página inicial</a>
+            </div>
         </div>
     </div>
+    
+    <!-- Modal de Mensagem (simula um canal de mensagens) -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeMessageChannel()">&times;</span>
+            <h2>Enviar Mensagem para @simo</h2>
+            <textarea id="messageInput" placeholder="Digite sua mensagem..."></textarea>
+            <button onclick="sendMessage()">Enviar</button>
+            <div id="messageOutput"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Função para enviar mensagem
+        function sendMessage() {
+            const message = document.getElementById('messageInput').value;
+            const output = document.getElementById('messageOutput');
+            if (message) {
+                output.innerHTML += `<p><strong>@simo:</strong> ${message}</p>`;
+                document.getElementById('messageInput').value = ''; // Limpar a caixa de texto
+            }
+        }
+
+        // Abrir o canal de mensagens
+        function openMessageChannel() {
+            document.getElementById('messageModal').style.display = 'block';
+        }
+
+        // Fechar o canal de mensagens
+        function closeMessageChannel() {
+            document.getElementById('messageModal').style.display = 'none';
+        }
+
+        // Função para efeito de confetes e mudança do botão
+        function follow() {
+            // Gerar efeito de confetes
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
+            // Alterar texto do botão
+            const followBtn = document.querySelector('.follow-btn');
+            followBtn.innerHTML = 'Seguindo';
+            followBtn.disabled = true;  // Desabilitar o botão após clicar
+
+            // Mudar estado para "Seguindo"
+            const following = document.querySelector('.following');
+            following.innerHTML = '<strong>201</strong> Seguindo';
+        }
+    </script>
 </body>
 </html>
 <link rel="stylesheet" href="TikTok.css">
