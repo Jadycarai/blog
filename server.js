@@ -1,39 +1,34 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+// Seleciona o botão "Seguir"
+const followButton = document.getElementById('followButton');
 
-const app = express();
-const PORT = 3000;
+// Seleciona o botão "Mensagem"
+const messageButton = document.getElementById('messageButton');
 
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
+// Função para o botão "Seguir"
+followButton.addEventListener('click', () => {
+    alert('Você está seguindo agora!');
+    followButton.textContent = 'Seguindo';
+    followButton.disabled = true; // Desativa o botão depois de clicar
+});
 
-// Banco de dados (simples) para armazenar mensagens
-let messages = [];
+// Função para abrir o modal de mensagens
+messageButton.addEventListener('click', () => {
+    const messageModal = document.getElementById('messageModal');
+    messageModal.style.display = 'block';
+});
 
-// Rota para enviar mensagens
-app.post('/send', (req, res) => {
-    const { nick, message } = req.body;
+// Função para fechar o modal
+function closeMessageChannel() {
+    const messageModal = document.getElementById('messageModal');
+    messageModal.style.display = 'none';
+}
 
-    if (!nick || !message) {
-        return res.status(400).json({ error: 'Nick e mensagem são obrigatórios.' });
+// Função para enviar mensagem
+function sendMessage() {
+    const messageInput = document.getElementById('messageInput').value;
+    const messageOutput = document.getElementById('messageOutput');
+    if (messageInput.trim() !== '') {
+        messageOutput.innerHTML += `<p><strong>Você:</strong> ${messageInput}</p>`;
+        document.getElementById('messageInput').value = ''; // Limpa o campo de texto
     }
-
-    // Salvar a mensagem
-    const newMessage = { nick, message, timestamp: new Date() };
-    messages.push(newMessage);
-
-    return res.status(201).json({ success: true, message: 'Mensagem enviada!' });
-});
-
-// Rota para buscar mensagens
-app.get('/messages', (req, res) => {
-    res.json(messages);
-});
-
-// Iniciar o servidor
-app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
-});
-
+}
