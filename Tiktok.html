@@ -3,68 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat do Simo</title>
+    <title>Perfil do TikTok - @simoZipZip</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="background">
         <div class="profile-wrapper">
-            <!-- Perfil do Simo -->
+            <!-- Cabeçalho do Perfil -->
             <div class="profile-header">
                 <div class="profile-image">
-                    <img src="https://via.placeholder.com/150" alt="Foto de Perfil">
+                    <img src="https://i.pinimg.com/736x/a8/c9/4d/a8c94d1668951418bdde80a14790b733.jpg">
                 </div>
-                <h1>@simo</h1>
-                <p class="bio">Explorando o mundo e resolvendo mistérios!</p>
+                <div class="profile-info">
+                    <h1>@simo</h1>
+                    <p class="followers"><strong id="followers-count">1,000,000</strong> Seguidores</p>
+                    <p class="following"><strong>200</strong> Seguindo</p>
+                    <p class="bio">Explorando o mundo e resolvendo mistérios. <span class="highlight">#Aliens</span></p>
+                </div>
             </div>
-            <button class="message-btn" onclick="openChat()">Abrir Canal de Mensagem</button>
+
+            <!-- Wallpaper do Perfil -->
+            <div class="profile-wallpaper">
+                <img src="https://images7.alphacoders.com/439/thumb-1920-439418.jpg" alt="Wallpaper do Simo">
+            </div>
+
+            <!-- Botões de Ação -->
+            <div class="actions">
+                <button class="follow-btn">Seguir</button>
+                <button class="message-btn">Mensagem</button>
+            </div>
         </div>
     </div>
-
-    <!-- Modal do Chat -->
-    <div id="chatModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeChat()">&times;</span>
-            <h2>Canal de Mensagem</h2>
-            <input id="userNick" type="text" placeholder="Digite seu nick">
-            <div id="chatBox"></div>
-            <input id="messageInput" type="text" placeholder="Digite sua mensagem">
-            <button onclick="sendMessage()">Enviar</button>
-        </div>
-    </div>
-
-    <script>
-        let socket;
-        let userNick = "";
-
-        function openChat() {
-            userNick = document.getElementById('userNick').value || 'Anônimo';
-            document.getElementById('chatModal').style.display = 'block';
-
-            // Conectar ao WebSocket
-            socket = new WebSocket('ws://localhost:8080');
-            socket.onmessage = function(event) {
-                const chatBox = document.getElementById('chatBox');
-                chatBox.innerHTML += `<p>${event.data}</p>`;
-                chatBox.scrollTop = chatBox.scrollHeight; // Scroll automático
-            };
-        }
-
-        function closeChat() {
-            document.getElementById('chatModal').style.display = 'none';
-            if (socket) socket.close();
-        }
-
-        function sendMessage() {
-            const messageInput = document.getElementById('messageInput');
-            const message = `${userNick}: ${messageInput.value}`;
-            if (socket && messageInput.value.trim()) {
-                socket.send(message);
-                messageInput.value = ''; // Limpar campo
-            }
-        }
-    </script>
 </body>
 </html>
-
 <link rel="stylesheet" href="TikTok.css">
