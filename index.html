@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Modelo</title>
+    <title>Blog Do Simo</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
@@ -18,15 +18,23 @@
             border-bottom: 1px solid #ddd;
             padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 15px;
         }
 
         header img {
-            max-height: 50px;
+            height: 50px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            color: #333;
+            margin: 0;
+            font-family: 'Georgia', serif;
         }
 
         nav {
+            margin-left: auto;
             display: flex;
             gap: 20px;
         }
@@ -40,34 +48,6 @@
 
         nav a:hover {
             color: #ff6600;
-        }
-
-        /* Anúncio */
-        .anuncio {
-            position: relative;
-            background-color: #f2f2f2;
-            text-align: center;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .anuncio img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .anuncio .fechar {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #ff0000;
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            font-size: 16px;
-            cursor: pointer;
         }
 
         /* Notícias */
@@ -118,20 +98,28 @@
         .noticia a:hover {
             text-decoration: underline;
         }
-    </style>
-    <script>
-        function fecharAnuncio() {
-            document.querySelector('.anuncio').style.display = 'none';
+
+        /* Anúncio */
+        .anuncio {
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
         }
-    </script>
+
+        .anuncio img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
 
     <!-- Cabeçalho -->
     <header>
-        <div class="logo">
-            <img src="URL_DA_LOGO" alt="Logo do Blog">
-        </div>
+        <img src="https://www.papeldeparede.etc.br/fotos/wp-content/uploads/a-esfera-e-os-quadrados_4990_1024x768.jpg" alt="Logo do Blog">
+        <h1>Blog Do Simo</h1>
         <nav>
             <a href="home.html">Home</a>
             <a href="design.html">Design</a>
@@ -139,14 +127,6 @@
             <a href="marketing.html">Marketing</a>
         </nav>
     </header>
-
-    <!-- Anúncio -->
-    <div class="anuncio">
-        <button class="fechar" onclick="fecharAnuncio()">X</button>
-        <a href="anuncio.html">
-            <img src="https://www.papeldeparede.etc.br/fotos/wp-content/uploads/a-esfera-e-os-quadrados_4990_1024x768.jpg" alt="Anúncio">
-        </a>
-    </div>
 
     <!-- Seção de Notícias -->
     <section class="noticias">
@@ -175,6 +155,13 @@
             </div>
         </div>
     </section>
+
+    <!-- Anúncio -->
+    <footer class="anuncio">
+        <a href="anuncio.html">
+            <img src="https://www.papeldeparede.etc.br/fotos/wp-content/uploads/a-esfera-e-os-quadrados_4990_1024x768.jpg" alt="Anúncio">
+        </a>
+    </footer>
 
 </body>
 </html>
