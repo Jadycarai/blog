@@ -44,6 +44,7 @@
 
         /* Anúncio */
         .anuncio {
+            position: relative;
             background-color: #f2f2f2;
             text-align: center;
             padding: 10px;
@@ -53,6 +54,20 @@
         .anuncio img {
             max-width: 100%;
             height: auto;
+        }
+
+        .anuncio .fechar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 16px;
+            cursor: pointer;
         }
 
         /* Notícias */
@@ -104,51 +119,59 @@
             text-decoration: underline;
         }
     </style>
+    <script>
+        function fecharAnuncio() {
+            document.querySelector('.anuncio').style.display = 'none';
+        }
+    </script>
 </head>
 <body>
 
     <!-- Cabeçalho -->
     <header>
         <div class="logo">
-            <img src="https://media.discordapp.net/attachments/1308931882968420405/1308932141811499038/image.png?ex=678a3a4d&is=6788e8cd&hm=ed157e73a3604ec7f2ffd85f9519717aa3f22fd943a5f6b67b1642c56b35bdfc&=&format=webp&quality=lossless" alt="Logo do Blog">
+            <img src="URL_DA_LOGO" alt="Logo do Blog">
         </div>
         <nav>
-            <a href="#home">Home</a>
-            <a href="#design">Design</a>
-            <a href="#fotografia">Fotografia</a>
-            <a href="#marketing">Marketing</a>
+            <a href="home.html">Home</a>
+            <a href="design.html">Design</a>
+            <a href="fotografia.html">Fotografia</a>
+            <a href="marketing.html">Marketing</a>
         </nav>
     </header>
 
     <!-- Anúncio -->
     <div class="anuncio">
-        <img src="https://pbs.twimg.com/media/E-hz9tIXsAw8UI6?format=jpg&name=4096x4096" alt="Anúncio">
+        <button class="fechar" onclick="fecharAnuncio()">X</button>
+        <a href="anuncio.html">
+            <img src="https://www.papeldeparede.etc.br/fotos/wp-content/uploads/a-esfera-e-os-quadrados_4990_1024x768.jpg" alt="Anúncio">
+        </a>
     </div>
 
     <!-- Seção de Notícias -->
     <section class="noticias">
         <div class="noticia">
-            <img src="https://pbs.twimg.com/media/E-hz9tIXsAw8UI6?format=jpg&name=4096x4096" alt="Notícia 1">
+            <img src="https://www.papeldeparede.etc.br/fotos/wp-content/uploads/a-esfera-e-os-quadrados_4990_1024x768.jpg" alt="Notícia 1">
             <div class="noticia-content">
                 <h3>5 dicas para fechar mais contratos como freelancer</h3>
                 <p>Muitos freelancers não conseguem grandes projetos por erros comuns.</p>
-                <a href="#link1">Leia mais</a>
+                <a href="noticia1.html">Leia mais</a>
             </div>
         </div>
         <div class="noticia">
-            <img src="https://pbs.twimg.com/media/E-hz9tIXsAw8UI6?format=jpg&name=4096x4096" alt="Notícia 2">
+            <img src="https://www.papeldeparede.etc.br/fotos/wp-content/uploads/a-esfera-e-os-quadrados_4990_1024x768.jpg" alt="Notícia 2">
             <div class="noticia-content">
                 <h3>Aprenda a agendar posts 3D no Facebook</h3>
                 <p>Descubra como usar as novas ferramentas para melhorar seu engajamento.</p>
-                <a href="#link2">Leia mais</a>
+                <a href="noticia2.html">Leia mais</a>
             </div>
         </div>
         <div class="noticia">
-            <img src="https://pbs.twimg.com/media/E-hz9tIXsAw8UI6?format=jpg&name=4096x4096" alt="Notícia 3">
+            <img src="https://www.papeldeparede.etc.br/fotos/wp-content/uploads/a-esfera-e-os-quadrados_4990_1024x768.jpg" alt="Notícia 3">
             <div class="noticia-content">
                 <h3>Quanto investir para atingir seus objetivos?</h3>
                 <p>Saiba como planejar seu orçamento de marketing com eficiência.</p>
-                <a href="#link3">Leia mais</a>
+                <a href="noticia3.html">Leia mais</a>
             </div>
         </div>
     </section>
