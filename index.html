@@ -3,163 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publicitários Criativos</title>
+    <title>Meu Blog</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #f4f4f4;
         }
 
         header {
-            background-color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ddd;
-        }
-
-        header img {
-            height: 50px;
-        }
-
-        nav {
-            display: flex;
-            gap: 20px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .banner {
-            background-color: #f0f0f0;
-            text-align: center;
-            padding: 10px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        .articles {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .article {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
-
-        .article:hover {
-            transform: scale(1.02);
-        }
-
-        .article img {
-            width: 100%;
-            height: auto;
-        }
-
-        .article-content {
-            padding: 15px;
-        }
-
-        .article-content h3 {
-            font-size: 18px;
-            margin: 0 0 10px;
-            color: #333;
-        }
-
-        .article-content p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        footer {
             background-color: #333;
             color: white;
+            padding: 15px 20px;
             text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
         }
-    </style>
-</head>
-<body>
 
-<header>
-    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.pinterest.com%2Fpin%2F412220172146434898%2F&psig=AOvVaw0VWvVwqt3FG55pIc0xsG3I&ust=1737134333964000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPiljenf-ooDFQAAAAAdAAAAABAJ" alt="Logo">
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Design</a>
-        <a href="#">Fotografia</a>
-        <a href="#">Freelancer</a>
-        <a href="#">Marketing</a>
-    </nav>
-</header>
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-<div class="banner">
-    <p>Anúncio: Evento OBGS NEXT LEVEL - 10 a 13 de outubro</p>
-</div>
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-<div class="container">
-    <div class="articles">
-        <div class="article">
-            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.pinterest.com%2Fpin%2F412220172146434898%2F&psig=AOvVaw0VWvVwqt3FG55pIc0xsG3I&ust=1737134333964000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPiljenf-ooDFQAAAAAdAAAAABAJ" alt="Artigo 1">
-            <div class="article-content">
-                <h3>5 dicas para você fechar mais contratos como freelancer</h3>
-                <p>Muitos freelancers não conseguem fechar grandes projetos por simplesmente deixar passar batido vários detalhes na hora de fechar o negócio...</p>
-            </div>
-        </div>
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
 
-        <div class="article">
-            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.pinterest.com%2Fpin%2F412220172146434898%2F&psig=AOvVaw0VWvVwqt3FG55pIc0xsG3I&ust=1737134333964000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPiljenf-ooDFQAAAAAdAAAAABAJ" alt="Artigo 2">
-            <div class="article-content">
-                <h3>Aprenda como criar e agendar posts em 3D no Facebook</h3>
-                <p>Você deve ter notado que recentemente o Facebook lançou uma nova integração com postagens 3D, permitindo que...</p>
-            </div>
-        </div>
-
-        <div class="article">
-            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.pinterest.com%2Fpin%2F412220172146434898%2F&psig=AOvVaw0VWvVwqt3FG55pIc0xsG3I&ust=1737134333964000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPiljenf-ooDFQAAAAAdAAAAABAJ" alt="Artigo 3">
-            <div class="article-content">
-                <h3>Você sabe o quanto investir para atingir seus objetivos de marketing digital?</h3>
-                <p>Não se sabe ao certo quando começar a investir no marketing, mas o que você precisa entender é...</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<footer>
-    <p>&copy; 2025 Publicitários Criativos - Todos os direitos reservados.</p>
-</footer>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anúncio Personalizado</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
         }
 
         .anuncio {
@@ -216,6 +99,18 @@
     </style>
 </head>
 <body>
+    <header>
+        <h1>Bem-vindo ao Meu Blog</h1>
+    </header>
+    <main>
+        <div class="image-container">
+            <img src="https://i.pinimg.com/originals/9e/38/4f/9e384f9ba36496809b7c446bab4115b7.jpg" alt="Imagem do Blog">
+        </div>
+        <div class="content">
+            <p>Este é um exemplo de blog simples. Aqui você pode adicionar conteúdos, como textos, imagens e muito mais!</p>
+            <p>Explore o layout e personalize conforme sua necessidade. Divirta-se criando!</p>
+        </div>
+    </main>
     <div class="anuncio" id="anuncio">
         <div class="anuncio-header">
             <h2>Oferta Especial!</h2>
@@ -226,7 +121,6 @@
             <p>Não perca essa chance! Promoção válida até o final do mês.</p>
         </div>
     </div>
-
     <script>
         function fecharAnuncio() {
             const anuncio = document.getElementById("anuncio");
