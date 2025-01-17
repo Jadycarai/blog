@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Glitch</title>
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: monospace;
+            overflow: hidden;
+        }
+
+        .glitch {
+            font-size: 2rem;
+            text-align: center;
+            animation: glitch-effect 2s infinite;
+        }
+
+        @keyframes glitch-effect {
+            0% { color: white; }
+            25% { color: red; transform: translateX(-2px); }
+            50% { color: green; transform: translateX(2px); }
+            75% { color: blue; transform: translateX(-2px); }
+            100% { color: white; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="glitch">Welcome to the Secrets</h1>
+    <p>Theories and hidden messages will appear here.</p>
+</body>
+</html>
