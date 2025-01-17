@@ -10,11 +10,12 @@
     <div class="glitch-container">
         <h1>Restricted Access</h1>
         <form action="/glitch" method="POST">
-            <input type="text" name="username" placeholder="Username" value="Simo Gallagher De Luca" readonly>
-            <input type="password" name="password" placeholder="Password" value="Hippoampere" readonly>
+            <input type="text" name="username" placeholder="Enter Username" required>
+            <input type="password" name="password" placeholder="Enter Password" required>
             <button type="submit">Enter</button>
         </form>
         <p>Enter the credentials to proceed.</p>
     </div>
 </body>
 </html>
+<input type="text" name="username" placeholder="Enter Username" autocomplete="off" required>
