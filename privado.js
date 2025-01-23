@@ -13,7 +13,7 @@ loginForm.addEventListener("submit", function (event) {
   const password = document.getElementById("password").value;
 
   if (username === validUsername && password === validPassword) {
-    window.location.href = "https://jadycarai.github.io/blog/secrethipper"; // Redireciona ao site
+    window.location.href = "160836481246.html"; // Redireciona ao site
   } else {
     errorMessage.classList.remove("hidden"); // Mostra mensagem de erro
   }
