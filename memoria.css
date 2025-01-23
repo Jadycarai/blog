@@ -1,0 +1,81 @@
+/* Resetando margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+header {
+    background-color: #333;
+    padding: 20px;
+    border-bottom: 1px solid #666;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.quote {
+    font-size: 1.2em;
+    color: #ccc;
+    margin: 20px 0;
+}
+
+.container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.memories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.memory {
+    margin: 20px;
+    width: 250px;
+    border: 2px solid #666;
+    padding: 10px;
+    position: relative;
+}
+
+.sketch {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.fractured {
+    position: relative;
+    margin-top: 50px;
+}
+
+.fragment {
+    position: absolute;
+    z-index: 2;
+    transition: transform 0.5s;
+}
+
+chaos {
+    position: relative;
+}
+
+footer {
+    background-color: #333;
+    color: #ccc;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
