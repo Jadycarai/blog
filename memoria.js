@@ -1,6 +1,9 @@
 document.querySelectorAll('.fragment').forEach(fragment => {
-    fragment.addEventListener('click', () => {
-        fragment.style.transform = 'rotate(180deg)';
-        setTimeout(() => fragment.style.transform = '', 1000);
+    fragment.addEventListener('mouseover', () => {
+        fragment.style.transform = 'scale(1.05)';
+    });
+
+    fragment.addEventListener('mouseout', () => {
+        fragment.style.transform = 'scale(1)';
     });
 });
