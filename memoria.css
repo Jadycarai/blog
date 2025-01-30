@@ -1,76 +1,41 @@
 body {
-    background-color: #1a1a1a;
-    color: #ff5555;
-    font-family: 'Courier New', Courier, monospace;
+    background: #000;
+    color: #fff;
+    font-family: 'Courier New', monospace;
     overflow: hidden;
     margin: 0;
     padding: 0;
 }
+
 .container {
     position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    margin-top: 10%;
 }
-.audio-player {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+
+.glitch-text {
+    animation: glitch 1s infinite;
+    font-size: 2em;
+    color: #0f0;
 }
-.background-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 4rem;
-    text-shadow: 2px 2px 4px #000000;
-    opacity: 0.05;
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-5px, 5px); }
+    40% { transform: translate(-5px, -5px); }
+    60% { transform: translate(5px, 5px); }
+    80% { transform: translate(5px, -5px); }
+    100% { transform: translate(0); }
 }
-.random-phrases {
-    position: absolute;
-    font-size: 1.5rem;
-    font-weight: bold;
+
+.glitch-image {
+    width: 300px;
+    height: auto;
+    animation: glitch-image 2s infinite;
 }
-.phrase-1 {
-    top: 20%;
-    left: 10%;
-    transform: rotate(-10deg);
-}
-.phrase-2 {
-    bottom: 15%;
-    right: 15%;
-    transform: rotate(15deg);
-}
-.phrase-3 {
-    top: 50%;
-    right: 30%;
-    transform: rotate(-5deg);
-}
-.large-text-box {
-    position: absolute;
-    bottom: 10%;
-    left: 5%;
-    width: 40%;
-    height: 40%;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    color: #ffffff;
-    font-size: 1rem;
-    overflow-y: auto;
-    border: 2px solid #ff5555;
-}
-.child-drawings {
-    position: absolute;
-}
-.drawing-1 {
-    top: 5%;
-    left: 70%;
-    width: 200px;
-}
-.drawing-2 {
-    bottom: 5%;
-    right: 5%;
-    width: 150px;
+
+@keyframes glitch-image {
+    0% { filter: hue-rotate(0); }
+    50% { filter: hue-rotate(90deg); }
+    100% { filter: hue-rotate(0); }
 }
