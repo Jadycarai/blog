@@ -45,8 +45,6 @@
         .noticia-img {
             width: 100%;
             height: auto;
-            opacity: 0;
-            transition: opacity 1s ease;
         }
 
         .noticia-content {
@@ -70,24 +68,6 @@
             text-align: justify;
         }
 
-        .highlight {
-            color: transparent;
-            background-color: #333;
-            padding: 5px;
-            transition: color 0.3s ease;
-        }
-
-        .highlight:hover {
-            color: yellow;
-        }
-
-        .hidden-message {
-            display: none;
-            font-size: 20px;
-            color: #ff6347;
-            margin-top: 20px;
-        }
-
         .back-btn {
             display: block;
             width: fit-content;
@@ -105,27 +85,6 @@
         .back-btn:hover {
             background-color: #e05a00;
         }
-
-        /* Animação de digitação */
-        .typing {
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: .15em solid #ff6600;
-            width: 0;
-            animation: typing 4s steps(40, end) forwards;
-        }
-
-        @keyframes typing {
-            100% {
-                width: 100%;
-            }
-        }
-
-        /* Animação de imagem */
-        .noticia-img.visible {
-            opacity: 1;
-        }
-
     </style>
 </head>
 <body>
@@ -138,51 +97,27 @@
 
     <!-- Conteúdo da Notícia -->
     <div class="noticia-container">
-        <img src="https://pbs.twimg.com/media/GXb4PkiXMAADLnB?format=jpg&name=4096x4096" id="noticia-img">
+        <img src="https://pbs.twimg.com/media/GXb4PkiXMAADLnB?format=jpg&name=4096x4096" alt="Imagem da Notícia" class="noticia-img">
         <div class="noticia-content">
             <h2 class="noticia-title">A verdadeira ORIGEM do Xyloghaemaths</h2>
             <p class="noticia-subtitle">Ei, pessoal! Adivinha o que eu descobri?</p>
-            <p class="noticia-text typing">
+            <p class="noticia-text">
                Primeiro, esses alienígenas têm um jeito de espalhar umas células malucas que só funcionam em pessoas que já morreram. Tipo, se você estiver vivo, nem acontece nada, bom, eu li em um quadrinho da marvel, MAS ELES SÃO REAIS, ACREDITE.
+            <p class="noticia-text">
+Depois que uma pessoa morre, essas células começaram a trabalhar como umas máquinas dentro do corpo. Elas quebram os ossos, grudam nas partes no lugar errado e transformam a carne em músculos superfortes. Eu vi que isso acontece em segundos! É tão rápido que o corpo fica até quente demais, e o sangue pode ferver! Tipo, uau, mas também muito nojento, né?
+Ah, e tem uns alienígenas que são "especiais". Por exemplo, se um bebê vira um alienígena, ele fica pequeno e ágil. Já outros podem usar mais de um corpo para criar um alienígena gigante e superforte. Isso é meio assustador, mas também é incrível como eles pensam em tudo pra serem fortes. Parece até que eles têm chefes que mandam neles!
+Então, esses alienígenas podem transformar todo o mundo e até criar o próprio "mundo" deles. Eu não queria ver isso ao vivo, mas adoro aprender sobre eles. Imagina só!
             </p>
             <p class="noticia-text">
-            Depois que uma pessoa morre, essas células começam a trabalhar como umas máquinas dentro do corpo. Elas quebram os ossos, grudam nas partes no lugar errado e transformam a carne em músculos superfortes. Eu vi que isso acontece em segundos! É tão rápido que o corpo fica até quente demais, e o sangue pode ferver! Tipo, uau, mas também muito nojento, né?
+                QOs Xyloghaemaths não possuem inteligência convencional. Em vez disso, opera como um ecossistema coordenado por uma entidade central ou “mente-colmeia”. Seu propósito aparente é consumo de biomassa para sustentar seu ciclo de vida, mas há sinais de que foram criados por uma civilização avançada como arma biológica. Vestígios de tecnologia integrados às criaturas sugerem um passado mais complexo e sinistro. Quer saber mais, proxima att dia 16 de fevereiro.
             </p>
-            <p class="noticia-text">
-                Ah, e tem uns alienígenas que são "especiais". Por exemplo, se um bebê vira um alienígena, ele fica pequeno e ágil. Já outros podem usar mais de um corpo para criar um alienígena gigante e superforte. Isso é meio assustador, mas também é incrível como eles pensam em tudo pra serem fortes. Parece até que eles têm chefes que mandam neles!
-                <span class="highlight">Xyloghaemaths</span>
-            </p>
-            <p class="noticia-text">
-                Então, esses alienígenas podem transformar todo o mundo e até criar o próprio "mundo" deles. Eu não queria ver isso ao vivo, mas adoro aprender sobre eles. Imagina só!
-            </p>
-            <p class="noticia-text">
-                QOs Xyloghaemaths não possuem inteligência convencional. Em vez disso, opera como um ecossistema coordenado por uma entidade central ou “mente-colmeia”. Seu propósito aparente é consumo de biomassa para sustentar seu ciclo de vida, mas há sinais de que foram criados por uma civilização avançada como arma biológica. Vestígios de tecnologia integrados às criaturas sugerem um passado mais complexo e sinistro. Quer saber mais, próxima att dia 16 de fevereiro.
-            </p>
-
-            <!-- Mensagem oculta -->
-            <div id="hiddenMessage" class="hidden-message">
-                <p>Parabéns! Você desbloqueou uma pista secreta: "Os alienígenas estão se preparando para a próxima fase..."</p>
-            </div>
-
         </div>
     </div>
 
     <!-- Botão para Voltar -->
     <a href="index.html" class="back-btn">Voltar ao Blog</a>
 
-    <script>
-        // Animação de imagem
-        window.onload = () => {
-            document.getElementById("noticia-img").classList.add("visible");
-        };
-
-        // Revelar a mensagem secreta
-        document.querySelectorAll('.highlight').forEach(element => {
-            element.addEventListener('mouseover', () => {
-                document.getElementById('hiddenMessage').style.display = 'block';
-            });
-        });
-    </script>
-
 </body>
 </html>
+
+
