@@ -138,7 +138,7 @@
 
     <!-- Conteúdo da Notícia -->
     <div class="noticia-container">
-        <img src="https://pbs.twimg.com/media/GXb4PkiXMAADLnB?format=jpg&name=4096x4096" alt="Imagem da Notícia" class="noticia-img" id="noticia-img">
+        <img src="https://pbs.twimg.com/media/GXb4PkiXMAADLnB?format=jpg&name=4096x4096" id="noticia-img">
         <div class="noticia-content">
             <h2 class="noticia-title">A verdadeira ORIGEM do Xyloghaemaths</h2>
             <p class="noticia-subtitle">Ei, pessoal! Adivinha o que eu descobri?</p>
@@ -150,7 +150,7 @@
             </p>
             <p class="noticia-text">
                 Ah, e tem uns alienígenas que são "especiais". Por exemplo, se um bebê vira um alienígena, ele fica pequeno e ágil. Já outros podem usar mais de um corpo para criar um alienígena gigante e superforte. Isso é meio assustador, mas também é incrível como eles pensam em tudo pra serem fortes. Parece até que eles têm chefes que mandam neles!
-                <span class="highlight">Mas há algo mais.</span>
+                <span class="highlight">Xyloghaemaths</span>
             </p>
             <p class="noticia-text">
                 Então, esses alienígenas podem transformar todo o mundo e até criar o próprio "mundo" deles. Eu não queria ver isso ao vivo, mas adoro aprender sobre eles. Imagina só!
@@ -176,4 +176,13 @@
             document.getElementById("noticia-img").classList.add("visible");
         };
 
-        // Revelar a mensagem secre
+        // Revelar a mensagem secreta
+        document.querySelectorAll('.highlight').forEach(element => {
+            element.addEventListener('mouseover', () => {
+                document.getElementById('hiddenMessage').style.display = 'block';
+            });
+        });
+    </script>
+
+</body>
+</html>
